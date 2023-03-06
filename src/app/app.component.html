@@ -4,17 +4,23 @@
   </div>
 
   <ul class="task-list">
-      <app-task-item class="task-item" *ngFor="let task of tasks"></app-task-item>
+      <app-task-item class="task-item" *ngFor="let task of tasks" [name]="task.name"></app-task-item>
       <button (click)="addTaskDialog.showModal()" class="add-task-button">Agregar</button>
   </ul>
-
-
-  <dialog #addTaskDialog class="add-task-dialog">
-    <button (click)="addTaskDialog.close()"></button>
-    <form>
-      <label>Nombre</label>
-      <input type="text" name="">
-    </form>
-  </dialog>
-
 </div>
+
+<dialog #addTaskDialog class="add-task-dialog">
+  <div class="dialog-header">
+    <h2>Agregar tarea</h2>
+  </div>
+
+  <form [formGroup]="taskForm" (ngSubmit)="submitTask()">
+    <div class="dialog-content">
+      <input formControlName="taskNameInput" type="text" name="" placeholder="Nombre de la tarea">
+    </div>
+    <div class="dialog-actions">
+      <button type="button" (click)="addTaskDialog.close()">Cancelar</button>
+      <button type="submit">Añadir tarea</button>
+    </div>
+  </form>
+</dialog>

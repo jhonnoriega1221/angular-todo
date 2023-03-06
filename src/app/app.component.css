@@ -29,9 +29,10 @@
     justify-content: end;
     width: 100%;
     box-sizing: border-box;
-    padding: 56px 24px 12px 24px;
+    padding: 56px 24px 84px 24px;
     flex-direction: column;
     align-items: flex-end;
+    background-color: white;
 }
 
 .add-task-button {
@@ -45,4 +46,10 @@
 
 .task-item{
     width:100%;
+}
+
+.add-task-dialog{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
