@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-
-interface Task {
-  name:string;
-}
+import { Task } from './models/task';
 
 @Component({
   selector: 'app-root',
