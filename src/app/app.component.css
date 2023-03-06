@@ -1,0 +1,48 @@
+.container {
+    height: 100%;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.task-list-container{
+	position: relative;
+}
+
+.top-bar {
+    width: 100%;
+    background-color: blue;
+    color: white;
+    padding: 12px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left:0;
+    height: 56px;
+    display: flex;
+    align-items: center;
+}
+
+.task-list {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 56px 24px 12px 24px;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.add-task-button {
+    position: fixed;
+    bottom: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 100%;
+    margin-bottom: 12px;
+}
+
+.task-item{
+    width:100%;
+}

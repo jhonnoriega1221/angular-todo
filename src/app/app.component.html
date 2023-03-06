@@ -1,10 +1,20 @@
-<div class="top-bar">
-  <h1>Lista de tareas</h1>
+<div class="container">
+  <div class="top-bar">
+    <h1>Lista de tareas</h1>
+  </div>
+
+  <ul class="task-list">
+      <app-task-item class="task-item" *ngFor="let task of tasks"></app-task-item>
+      <button (click)="addTaskDialog.showModal()" class="add-task-button">Agregar</button>
+  </ul>
+
+
+  <dialog #addTaskDialog class="add-task-dialog">
+    <button (click)="addTaskDialog.close()"></button>
+    <form>
+      <label>Nombre</label>
+      <input type="text" name="">
+    </form>
+  </dialog>
+
 </div>
-<ul class="task-list">
-    <app-task-item *ngFor="let task of tasks"></app-task-item>
-</ul>
-<dialog class="add-task-dialog">
-  
-</dialog>
-<button class="add-task-button">Agregar</button>

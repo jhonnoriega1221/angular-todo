@@ -6,27 +6,27 @@ import { Task } from '../models/task';
 })
 export class TaskService {
 
-  public tasks:Task[] = [];
+  private tasks: Task[] = [{name: 'correr'}, {name: 'bañarse'}];
 
-  constructor() { }
+  constructor() {}
 
-  public getTasks():Task[]{
+  public getTasks(): Task[] {
     return this.tasks;
   }
 
-  public getTask(taskSearch:Task):Task|null{
+  public getTask(taskSearch: Task): Task | null {
 
-    const tasks:Task[] = this.getTasks();
+    const tasks: Task[] = this.getTasks();
 
-    const task = tasks.find((task:Task) => task.name = taskSearch.name);
-    if(task === undefined)
+    const task = tasks.find((task: Task) => task.name = taskSearch.name);
+    if (task === undefined)
       return null;
 
     return task;
   }
 
-    public removeTask(task:Task):void{
-    let tasks:Task[] = this.getTasks();
+  public removeTask(task: Task): void {
+    let tasks: Task[] = this.getTasks();
 
     const taskIndex = tasks.findIndex(searchTask => {
       return searchTask.name === task.name;
@@ -38,7 +38,7 @@ export class TaskService {
 
   }
 
-    public addTask(task:Task):void{
+  public addTask(task: Task): void {
     let tasks = this.getTasks();
     tasks.unshift(task);
 
