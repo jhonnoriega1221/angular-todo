@@ -6,17 +6,12 @@ import { Task } from '../models/task';
 })
 export class TaskService {
 
+  public tasks:Task[] = [];
+
   constructor() { }
 
   public getTasks():Task[]{
-
-    if(localStorage.getItem('tasks') === null){
-      return [];
-    } 
-
-    let tasks:Task[] = [];
-    tasks = JSON.parse(localStorage.getItem('tasks') || ""); 
-    return tasks;
+    return this.tasks;
   }
 
   public getTask(taskSearch:Task):Task|null{
@@ -31,11 +26,7 @@ export class TaskService {
   }
 
     public removeTask(task:Task):void{
-    let tasks:Task[] = [];
-
-    if(localStorage.getItem('tasks')){
-      tasks = JSON.parse(localStorage.getItem('tasks') || '');
-    }
+    let tasks:Task[] = this.getTasks();
 
     const taskIndex = tasks.findIndex(searchTask => {
       return searchTask.name === task.name;
@@ -43,19 +34,15 @@ export class TaskService {
 
     tasks.splice(taskIndex, 1);
 
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    this.tasks = tasks;
 
   }
 
     public addTask(task:Task):void{
-    let tasks = [];
-    if(localStorage.getItem('tasks')){
-      tasks = JSON.parse(localStorage.getItem('tasks') || '');
-    }
-
+    let tasks = this.getTasks();
     tasks.unshift(task);
 
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    this.tasks = tasks;
 
   }
 }
