@@ -17,4 +17,4 @@ import { TaskItemComponent } from './components/task-item/task-item.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
