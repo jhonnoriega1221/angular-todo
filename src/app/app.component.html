@@ -21,19 +21,14 @@
   <form [formGroup]="taskForm" (ngSubmit)="submitTask()">
     <div class="dialog-content">
       <input formControlName="taskNameInput" type="text" name="" placeholder="Nombre de la tarea">
+      <p class="error-message" [ngStyle]="{'opacity': taskForm.invalid ? '1' : '0'}">*El nombre de la tarea debe contener mínimo 4 caracteres</p>
     </div>
     <div class="dialog-actions">
-      <button class="dialog-actions-button cancel-button" type="button" (click)="addTaskDialog.close()">Cancelar</button>
-      <button class="dialog-actions-button" type="submit">Añadir tarea</button>
+      <button class="dialog-actions-button cancel-button" type="button" (click)="closeDialog()">Cancelar</button>
+      <button class="dialog-actions-button" type="submit" [disabled]="taskForm.invalid">Añadir tarea</button>
     </div>
   </form>
 </dialog>
-
-<ng-container>
-  <div class="empty-state">
-    
-  </div>
-</ng-container>
 
 <ng-template #emptyState >
   <div class="empty-state">

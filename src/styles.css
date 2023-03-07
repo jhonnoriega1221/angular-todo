@@ -52,6 +52,14 @@ button:active::after{
     opacity: 0.25;
 }
 
+button:disabled{
+    background-color: var(--outline);
+    color: gray;
+}
+
+button:disabled:hover::after{
+    background-color: transparent;
+}
 .fab{
 	box-shadow: 0px 6px 14px 6px var(--outline);
 }

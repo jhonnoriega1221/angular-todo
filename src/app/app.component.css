@@ -75,3 +75,9 @@
     text-align: center;
     font-size: 18px;
 }
+
+.error-message{
+    color: var(--error);
+    font-size: 12px;
+    margin-top: 6px;
+}

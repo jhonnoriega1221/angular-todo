@@ -26,14 +26,20 @@ export class AppComponent implements OnInit {
   }
 
   public submitTask():void{
-    if(this.taskForm.invalid)
-      return;
+    if(this.taskForm.invalid){
+      return;      
+    }
+
 
     const task:Task = {
       name: this.taskForm.get('taskNameInput')?.value,
     }
 
     this._taskService.addTask(task);
+    this.closeDialog();
+  }
+
+  public closeDialog(){
     this.addTaskDialog?.nativeElement.close();
     name: this.taskForm.reset('taskNameInput');
   }
