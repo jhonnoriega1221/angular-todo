@@ -107,7 +107,7 @@ button:disabled:hover::after{
     padding: 12px;
 }
 
-input[type=text]{
+input[type=text], input[type=search]{
     width: 100%;
     display: block;
     box-sizing: border-box;
@@ -118,7 +118,7 @@ input[type=text]{
     border-radius: 12px;
 }
 
-input[type=text]:focus{
+input[type=text]:focus, input[type=search]:focus{
     background-color: white;
     outline: none;
     box-shadow: 0px 0px 2px 0px var(--primary);

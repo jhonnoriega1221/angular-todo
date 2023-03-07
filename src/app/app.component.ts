@@ -14,15 +14,20 @@ export class AppComponent implements OnInit {
   
   public tasks:Task[] = [];
   public taskForm:FormGroup;
+  public searchForm:FormGroup;
 
   constructor(private _taskService:TaskService, private fb:FormBuilder){
     this.taskForm = this.fb.group({
       taskNameInput: new FormControl('', [Validators.required, Validators.minLength(4)])
     });
+
+    this.searchForm = this.fb.group({
+      searchInput: new FormControl('')
+    })
   }
 
   ngOnInit(): void {
-    this.tasks = this._taskService.getTasks();
+    this.retrieveTaskList();
   }
 
   public submitTask():void{
@@ -41,10 +46,34 @@ export class AppComponent implements OnInit {
 
   public closeDialog(){
     this.addTaskDialog?.nativeElement.close();
-    name: this.taskForm.reset('taskNameInput');
+    this.taskForm.reset('taskNameInput');
   }
 
   public removeTask(task:Task):void{
     this._taskService.removeTask(task);
+    this.searchForm.reset('searchInput');
+    this.retrieveTaskList();
+  }
+
+  public retrieveTaskList(){
+    this.tasks = this._taskService.getTasks();
+  }
+
+    public searchTasks():void{
+      const searchValue = this.searchForm.get('searchInput')?.value;
+
+      if(searchValue === ""){
+        this.retrieveTaskList();
+        return;
+      }
+
+      const searchArray:Task[] = [];
+
+    this._taskService.getTasks().filter( (item: Task) => {
+      if( item.name.toLowerCase().includes(searchValue.toLowerCase()) )
+        searchArray.push(item);
+    });
+    this.tasks = searchArray
   }
 }
+

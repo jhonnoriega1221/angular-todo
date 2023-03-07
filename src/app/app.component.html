@@ -1,6 +1,6 @@
 <div class="container">
   <div class="top-bar">
-    <h1>Lista de tareas</h1>
+    <form style="width: 100%" [formGroup]="searchForm"><input formControlName="searchInput" class="search-bar" type="search" name="" placeholder="Buscar tareas..." (input)="searchTasks()"></form>
   </div>
 
   <ul class="task-list" >
