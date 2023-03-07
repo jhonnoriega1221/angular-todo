@@ -3,15 +3,19 @@
     <h1>Lista de tareas</h1>
   </div>
 
-  <ul class="task-list">
-      <app-task-item class="task-item" *ngFor="let task of tasks" [name]="task.name"></app-task-item>
-      <button (click)="addTaskDialog.showModal()" class="add-task-button">Agregar</button>
+  <ul class="task-list" >
+    <div class="task-item" *ngIf="tasks.length > 0; else emptyState">
+      <app-task-item class="task-item" *ngFor="let task of tasks" [name]="task.name" (removeTask)="removeTask(task)"></app-task-item>
+    </div>
+      <button (click)="addTaskDialog.showModal()" class="add-task-button fab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#032100" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      </button>
   </ul>
 </div>
 
 <dialog #addTaskDialog class="add-task-dialog">
   <div class="dialog-header">
-    <h2>Agregar tarea</h2>
+    <h2 class="dialog-header-title">Agregar tarea</h2>
   </div>
 
   <form [formGroup]="taskForm" (ngSubmit)="submitTask()">
@@ -19,8 +23,22 @@
       <input formControlName="taskNameInput" type="text" name="" placeholder="Nombre de la tarea">
     </div>
     <div class="dialog-actions">
-      <button type="button" (click)="addTaskDialog.close()">Cancelar</button>
-      <button type="submit">Añadir tarea</button>
+      <button class="dialog-actions-button cancel-button" type="button" (click)="addTaskDialog.close()">Cancelar</button>
+      <button class="dialog-actions-button" type="submit">Añadir tarea</button>
     </div>
   </form>
 </dialog>
+
+<ng-container>
+  <div class="empty-state">
+    
+  </div>
+</ng-container>
+
+<ng-template #emptyState >
+  <div class="empty-state">
+    <object class="empty-state-svg" data="../../assets/svg/empty-state.svg" type="image/svg+xml"></object>
+    <p class="empty-state-text">Agrega tu primera tarea presionando el botón +</p>
+  </div>
+    
+</ng-template>

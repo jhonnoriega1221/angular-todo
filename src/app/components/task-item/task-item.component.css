@@ -1,5 +1,22 @@
 .task-list-item {
     display: flex;
-    padding: 12px 0;
     justify-content: space-between;
+    border-bottom: 1px solid var(--outline);
+    padding: 18px 12px;
+    align-items: center;
+}
+
+.delete-task-button {
+    background-color: var(--error-container);
+    color: var(--on-error-container);
+    height: 42px;
+    width: 42px;
+    text-align: center;
+    border-radius: 100%;
+}
+
+@media (min-width: 600px){
+    .task-list-item{
+        padding: 18px 24px;
+    }
 }

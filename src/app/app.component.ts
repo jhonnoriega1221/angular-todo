@@ -37,4 +37,8 @@ export class AppComponent implements OnInit {
     this.addTaskDialog?.nativeElement.close();
     name: this.taskForm.reset('taskNameInput');
   }
+
+  public removeTask(task:Task):void{
+    this._taskService.removeTask(task);
+  }
 }

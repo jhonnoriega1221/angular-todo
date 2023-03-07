@@ -6,7 +6,7 @@ import { Task } from '../models/task';
 })
 export class TaskService {
 
-  private tasks: Task[] = [{name: 'correr'}, {name: 'bañarse'}];
+  private tasks: Task[] = [];
 
   constructor() {}
 
