@@ -14,6 +14,19 @@
     text-align: center;
 }
 
+.delete-title{
+    color: var(--on-error-container);
+}
+
+.error-button{
+    background-color: var(--error-container);
+    color: var(--on-error-container);
+}
+
+.cancel-error-button{
+    background-color: transparent;
+}
+
 @media (min-width: 600px){
     .task-list-item{
         padding: 18px 24px;
